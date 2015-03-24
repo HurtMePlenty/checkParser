@@ -8,6 +8,8 @@ repositories {
 dependencies {
     compile 'org.springframework:spring-context:4.0.6.RELEASE'
     compile 'net.sourceforge.tess4j:tess4j:1.5.0'
+    compile 'jmagick:jmagick:6.6.9'
+    compile 'org.bytedeco:javacv:0.10'
 
 }
   /*

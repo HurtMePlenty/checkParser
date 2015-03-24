@@ -27,6 +27,17 @@
     <orderEntry type="library" exported="" name="Gradle: platform-3.5.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hamcrest-library-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hamcrest-core-1.2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jmagick-6.6.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javacv-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javacpp-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: opencv-2.4.10-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ffmpeg-2.5.1-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: flycapture-2.7.3.13-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: libdc1394-2.2.2-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: libfreenect-0.5.1-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: videoinput-0.200-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: artoolkitplus-2.3.1-0.10" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: flandmark-1.07-0.10" level="project" />
   </component>
 </module>
 
