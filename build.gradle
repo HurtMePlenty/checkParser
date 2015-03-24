@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework:spring-context:4.0.6.RELEASE'
+    compile 'net.sourceforge.tess4j:tess4j:1.5.0'
+
+}
+  /*
+jar {
+    manifest {
+        attributes 'Main-Class': 'imageProcessor.EntryPoint'
+    }
+
+
+
+    from(configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }) {
+
+        // remove all signature files
+
+        exclude "META-INF/*.SF"
+
+        exclude "META-INF/*.DSA"
+
+        exclude "META-INF/*.RSA"
+
+    }
+}            */
