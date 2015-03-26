@@ -18,7 +18,6 @@ public class EntryPoint
                 BufferedImage bufferedImage = ImageIO.read(imageFile);
                 ImageProcessor.instance.processImage(bufferedImage, imageFile.getName());
             }
-
         }
         catch (Exception e)
         {

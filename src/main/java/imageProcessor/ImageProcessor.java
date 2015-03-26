@@ -12,6 +12,13 @@ enum ImageProcessor
     {
         this.fileName = fileName;
         BufferedImage preparedImage = ImagePreparator.instance.prepareImage(bufferedImage);
-        CheckCropper.instance.cropCheck(preparedImage);
+
+        BufferedImage rotated = ImageRotator.instance.rotateImage(preparedImage);
+        BufferedImage cropped = CheckCropper.instance.cropCheck(rotated);
+
+        ImageCutter.instance.cutImageByLines(cropped);
+
+        //String text = TextExtractor.instance.getText(cropped);
+        //ImageSaver.instance.saveTextResult(text, "result");
     }
 }

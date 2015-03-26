@@ -28,6 +28,21 @@ enum ImageSaver
         }
     }
 
+    public void saveImagePartResult(BufferedImage bufferedImage, String fileName)
+    {
+        try
+        {
+            String sourceName = ImageProcessor.instance.fileName;
+            File outputfile = new File(String.format("result\\%s\\parts\\%s.png", sourceName, fileName));
+            outputfile.getParentFile().mkdirs();
+            ImageIO.write(bufferedImage, "png", outputfile);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void saveTextResult(String textResult, String fileName)
     {
         try

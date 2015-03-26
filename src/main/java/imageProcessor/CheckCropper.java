@@ -4,6 +4,9 @@ package imageProcessor;
 import Catalano.Core.IntPoint;
 import Catalano.Imaging.FastBitmap;
 import Catalano.Imaging.Filters.Crop;
+import Catalano.Imaging.Tools.HoughLine;
+import Catalano.Imaging.Tools.HoughLineTransformation;
+import com.recognition.software.jdeskew.ImageDeskew;
 
 import java.awt.image.BufferedImage;
 
@@ -11,12 +14,12 @@ enum CheckCropper
 {
     instance;
 
-    private double checkImageHeightPart = 1.5;
-    private double checkImageWidthPart = 3;
+    private double checkImageHeightPart = 1;
+    private double checkImageWidthPart = 1;
     private int allowedAmountOfBlackDotsForWidth = 5;
-    private int requiredNumberOfEmptyColsForWidth = 10;
     private int allowedAmountOfBlackDotsForHeight = 20;
-    private int requiredNumberOfEmptyColsForHeight = 60;
+    private int allowedAmountOfBlackRaws = 10;
+    private int allowedAmountOfBlackCols = 5;
 
     public BufferedImage cropCheck(BufferedImage bufferedImage)
     {
@@ -44,7 +47,10 @@ enum CheckCropper
         {
             bottomBorder = bitmap.getHeight();
         }
-        return crop(bufferedImage, leftBorder, topBorder, rightBorder - leftBorder, bottomBorder - topBorder);
+
+        BufferedImage result =  ImageCropper.instance.crop(bufferedImage, leftBorder, topBorder, rightBorder - leftBorder, bottomBorder - topBorder);
+        ImageSaver.instance.saveImageResult(result, "cropped");
+        return result;
     }
 
     private int findXBorder(BufferedImage bufferedImage, int startX, int startY, borderXDirection direction)
@@ -56,9 +62,11 @@ enum CheckCropper
         int width = bitmap.getWidth();
         int checkLength = (int) ((double) height / checkImageHeightPart);
         int borderX = -1;
-        int emptyCols = 0;
+        int lastColWithoutNoise = -1;
+
         int x = startX;
         boolean condition = true;
+        int blackCols = 0;
         while (condition)
         {
             IntPoint intPoint = new IntPoint(x, startY);
@@ -72,18 +80,20 @@ enum CheckCropper
                     currentDots++;
                 }
             }
+            double percentOfBlack = ((double) currentDots / (double) checkLength) * 100;
 
-            if (currentDots < allowedAmountOfBlackDotsForWidth)
+            if (percentOfBlack < 30)
             {
-                emptyCols++;
-                if (emptyCols > requiredNumberOfEmptyColsForWidth)
-                {
-                    borderX = x;
-                    break;
-                }
+                lastColWithoutNoise = x;
+                blackCols = 0;
+
             } else
             {
-                emptyCols = 0;
+                blackCols++;
+                if (blackCols > allowedAmountOfBlackCols)
+                {
+                    break;
+                }
             }
 
             if (direction == borderXDirection.right)
@@ -97,14 +107,16 @@ enum CheckCropper
             }
         }
 
-        if (borderX != -1)
+        borderX = lastColWithoutNoise;
+
+        /*if (borderX != -1)
         {
             for (int y = startY - checkLength / 2; y < startY + checkLength / 2; y++)
             {
                 bitmap.setRGB(borderX, y, 255, 0, 0);
             }
             ImageSaver.instance.saveImageResult(bitmap.toBufferedImage(), "border" + direction.toString());
-        }
+        }*/
 
         return borderX;
     }
@@ -117,10 +129,11 @@ enum CheckCropper
         int height = bitmap.getHeight();
         int width = bitmap.getWidth();
         int checkLength = (int) ((double) width / checkImageWidthPart);
-        int borderY = -1;
-        int emptyCols = 0;
+        int borderY;
+        int lastRawWithoutNoise = -1;
         int y = startY;
         boolean condition = true;
+        int blackRaws = 0;
         while (condition)
         {
             IntPoint intPoint = new IntPoint(startX, y);
@@ -135,17 +148,19 @@ enum CheckCropper
                 }
             }
 
-            if (currentDots < allowedAmountOfBlackDotsForHeight)
+            double percentOfBlack = ((double) currentDots / (double) checkLength) * 100;
+
+            if (percentOfBlack < 30)
             {
-                emptyCols++;
-                if (emptyCols > requiredNumberOfEmptyColsForHeight)
-                {
-                    borderY = y;
-                    break;
-                }
+                lastRawWithoutNoise = y;
+                blackRaws = 0;
             } else
             {
-                emptyCols = 0;
+                blackRaws++;
+                if (blackRaws > allowedAmountOfBlackRaws)
+                {
+                    break;
+                }
             }
 
             if (direction == borderYDirection.top)
@@ -159,30 +174,22 @@ enum CheckCropper
             }
         }
 
-        if (borderY != -1)
+
+        borderY = lastRawWithoutNoise;
+
+        /*if (borderY != -1)
         {
             for (int x = startX - checkLength / 2; x < startX + checkLength / 2; x++)
             {
                 bitmap.setRGB(x, borderY, 255, 0, 0);
             }
             ImageSaver.instance.saveImageResult(bitmap.toBufferedImage(), "border" + direction.toString());
-        }
+        }*/
 
         return borderY;
     }
 
 
-    private BufferedImage crop(BufferedImage bufferedImage, int x, int y, int width, int height)
-    {
-        FastBitmap fastBitmap = new FastBitmap(bufferedImage);
-
-        //inversed order because crop use matrix CoordinateSystem
-        Crop crop = new Crop(y, x, width, height);
-        crop.ApplyInPlace(fastBitmap);
-        BufferedImage resultBufferedImage = fastBitmap.toBufferedImage();
-        ImageSaver.instance.saveImageResult(resultBufferedImage, "cropped");
-        return resultBufferedImage;
-    }
 
 
     enum borderXDirection
