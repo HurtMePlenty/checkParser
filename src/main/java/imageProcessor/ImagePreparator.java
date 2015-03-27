@@ -30,7 +30,7 @@ enum ImagePreparator
         Grayscale g = new Grayscale(Grayscale.Algorithm.Average);
         g.applyInPlace(bitmap);
         BufferedImage resultBufferedImage = bitmap.toBufferedImage();
-        ImageSaver.instance.saveImageResult(resultBufferedImage, "grayscale");
+        //ImageSaver.instance.saveImageResult(resultBufferedImage, "grayscale");
         return resultBufferedImage;
     }
 
@@ -68,7 +68,7 @@ enum ImagePreparator
         //bradley.setPixelBrightnessDifferenceLimit(0.02f);
         bradley.applyInPlace(fastBitmap);
         BufferedImage resultBufferedImage = fastBitmap.toBufferedImage();
-        ImageSaver.instance.saveImageResult(resultBufferedImage, "bradleyLocalThreshold");
+        //ImageSaver.instance.saveImageResult(resultBufferedImage, "bradleyLocalThreshold");
         return resultBufferedImage;
     }
 }
