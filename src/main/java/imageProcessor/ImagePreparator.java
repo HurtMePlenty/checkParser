@@ -27,6 +27,9 @@ enum ImagePreparator
     private BufferedImage grayScale(BufferedImage bufferedImage)
     {
         FastBitmap bitmap = new FastBitmap(bufferedImage);
+        if(bitmap.isGrayscale()){
+            return bufferedImage;
+        }
         Grayscale g = new Grayscale(Grayscale.Algorithm.Average);
         g.applyInPlace(bitmap);
         BufferedImage resultBufferedImage = bitmap.toBufferedImage();

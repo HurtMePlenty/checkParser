@@ -9,30 +9,13 @@ public class EntryPoint {
 
     public static void main(String[] args) {
         try {
-            File file = new File("result\\r14234792719_691192.jpg\\parts\\part4.png");
-
-            BufferedImage bufferedImage = ImageIO.read(file);
-            String res = TextExtractor.instance.getText(bufferedImage);
-            int a = 1;
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-
-    /*
-        try
-        {
             File dataFolder = new File("data");
-            for (File imageFile : dataFolder.listFiles())
-            {
+            for (File imageFile : dataFolder.listFiles()) {
                 BufferedImage bufferedImage = ImageIO.read(imageFile);
                 ImageProcessor.instance.processImage(bufferedImage, imageFile.getName());
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException(e);
-        }  */
+        }
     }
 }
