@@ -1,0 +1,62 @@
+AH Bart Knap
+1nfolaa1 berthei jnbartknap . n1
+O38-3861310
+
+EUR
+BOL BESCHUIT 1.55
+SUBTOT ML 1.55
+
+TOTAAL 1.55
+
+
+SUBTOTML
+TOTAAL
+
+PASHOUDERBON
+Kassanm
+VH MM 1
+
+Boekingsperi odez
+
+Referenti e  
+MAESTRO
+
+
+Referentisn
+
+MAESTRO
+
+A000O000043060
+
+RABOBANK
+
+Pas   xxxxxxxxxxxxxxx3010
+Pasnrz .. 1
+BETALING
+
+Datum-. VVOW2015 11-.55
+Transnm 045AUT
+Totaah 1.55 EUR
+
+
+Transnr  045AUT
+
+Totaa1  1.55 EUR
+Leesmethodez Chip
+N OK
+DANK U
+TOT ZIENS
+PINNEN 1.55
+
+TERUG 0.00
+
+
+ IEiiLi6  0200
+BTW OVER EUR
+1.02 0.00 0.00
+6.076 1.45 0.09
+0.094 0.00 0.00
+TOTML 1.46 0.09
+4023 3 1840 17
+
+

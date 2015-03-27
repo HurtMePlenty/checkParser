@@ -1,0 +1,37 @@
+AH Bart Knap
+1 nfol3a1 berthei j nbartknap 0 N
+O38-3861310
+EUR
+BOL BESCHUIT 1.55
+SUBTOTML 1.55
+TOTAAL 1.55
+PASHOUDERBON
+Kassanr0 805701
+Winke11 307159
+Boekingsperiodez 5045
+Referentie0 01040914
+MAESTRO
+A0O0O000O43060
+RABOBANK
+Pas0 xxxxxxxxxxxxxxx3010
+Pasnrz .. 1
+BETALING
+Datumz 1400202015 11155
+Transnr0 045AUT
+Totaa10 1.55 EUR
+Leesmethodez Chip
+PIN OK
+DANK U
+TOT ZIENS
+PINNEN 1.55
+TERUG 0.00
+BTW OVER EUR
+1.09 0.00 0.00
+6.076 1.46 0.09
+0.094 0.00 0.00
+TOTML 1.46 0.09
+X 4028 3 1840 17
+  11154 14-02-2015
+1- . HarteHjk bedankt
+. I 0 en tot ziens
+
